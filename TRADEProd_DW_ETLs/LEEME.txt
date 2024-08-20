@@ -1,0 +1,3 @@
+A la hora de editar las conexiones de archivo de archivo plano de las fuentes 
+externas y cargarle los archivos correspondientes elegir en la opcion
+"Página de códigos": "1252 (ANSI - Latín I)".

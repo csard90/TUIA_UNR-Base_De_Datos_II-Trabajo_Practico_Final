@@ -1,0 +1,514 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/24/2023 12:27:20 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-L15IKQ3"
+  DTS:CreatorName="DESKTOP-L15IKQ3\csard"
+  DTS:DTSID="{8095070F-0F96-4F44-9778-D5A4DD7D6AE9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5223.0"
+  DTS:LocaleID="11274"
+  DTS:ObjectName="dim_articulos_ETL"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{C3170394-2334-497B-8C7D-CD79554C4A65}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-L15IKQ3.TRADEProd]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{85EB5E76-CE07-4697-84B7-2B63A136DBA0}"
+      DTS:ObjectName="DESKTOP-L15IKQ3.TRADEProd">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-L15IKQ3;Initial Catalog=TRADEProd;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{85EB5E76-CE07-4697-84B7-2B63A136DBA0}DESKTOP-L15IKQ3.TRADEProd;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-L15IKQ3.TRADEProd_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3F64A937-3E5C-436C-9923-E5BC2ADA3D55}"
+      DTS:ObjectName="DESKTOP-L15IKQ3.TRADEProd_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-L15IKQ3;Initial Catalog=TRADEProd_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{3F64A937-3E5C-436C-9923-E5BC2ADA3D55}DESKTOP-L15IKQ3.TRADEProd_DW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ETL_dim_articulos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{1A47C68C-E820-401E-9C57-C21E2564A616}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ETL_dim_articulos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ETL_dim_articulos\DW_dim_articulos"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="DW_dim_articulos"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[dim_articulos]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL_dim_articulos\DW_dim_articulos.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-L15IKQ3.TRADEProd_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-L15IKQ3.TRADEProd_DW]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB].Columns[NOMBRE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NOMBRE"
+                      externalMetadataColumnId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB].ExternalColumns[NOMBRE]"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].Columns[NOMBRE]" />
+                    <inputColumn
+                      refId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB].Columns[FAMILIA]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FAMILIA"
+                      externalMetadataColumnId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB].ExternalColumns[FAMILIA]"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].Columns[FAMILIA]" />
+                    <inputColumn
+                      refId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB].Columns[PRECIO_UNITARIO]"
+                      cachedDataType="i4"
+                      cachedName="PRECIO_UNITARIO"
+                      externalMetadataColumnId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB].ExternalColumns[PRECIO_UNITARIO]"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].Columns[PRECIO_UNITARIO]" />
+                    <inputColumn
+                      refId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB].Columns[COSTO_UNITARIO]"
+                      cachedDataType="i4"
+                      cachedName="COSTO_UNITARIO"
+                      externalMetadataColumnId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB].ExternalColumns[COSTO_UNITARIO]"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].Columns[COSTO_UNITARIO]" />
+                    <inputColumn
+                      refId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB].Columns[CODIGO_PRODUCTO]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CODIGO_PRODUCTO"
+                      externalMetadataColumnId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB].ExternalColumns[CODIGO_PRODUCTO]"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].Columns[CODIGO_PRODUCTO]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB].ExternalColumns[CODIGO_PRODUCTO]"
+                      dataType="wstr"
+                      length="255"
+                      name="CODIGO_PRODUCTO" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB].ExternalColumns[NOMBRE]"
+                      dataType="wstr"
+                      length="255"
+                      name="NOMBRE" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB].ExternalColumns[FAMILIA]"
+                      dataType="wstr"
+                      length="255"
+                      name="FAMILIA" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB].ExternalColumns[PRECIO_UNITARIO]"
+                      dataType="i4"
+                      name="PRECIO_UNITARIO" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB].ExternalColumns[COSTO_UNITARIO]"
+                      dataType="i4"
+                      name="COSTO_UNITARIO" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ETL_dim_articulos\DW_dim_articulos.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL_dim_articulos\DW_dim_articulos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL_dim_articulos\DW_dim_articulos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL_dim_articulos\DW_dim_articulos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL_dim_articulos\DW_dim_articulos.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Transaccional_ARTICULOS"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[ARTICULOS]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-L15IKQ3.TRADEProd]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-L15IKQ3.TRADEProd]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].Columns[NOMBRE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].ExternalColumns[NOMBRE]"
+                      length="255"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].Columns[NOMBRE]"
+                      name="NOMBRE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].Columns[FAMILIA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].ExternalColumns[FAMILIA]"
+                      length="255"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].Columns[FAMILIA]"
+                      name="FAMILIA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].Columns[PRECIO_UNITARIO]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].ExternalColumns[PRECIO_UNITARIO]"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].Columns[PRECIO_UNITARIO]"
+                      name="PRECIO_UNITARIO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].Columns[COSTO_UNITARIO]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].ExternalColumns[COSTO_UNITARIO]"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].Columns[COSTO_UNITARIO]"
+                      name="COSTO_UNITARIO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].Columns[CODIGO_PRODUCTO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].ExternalColumns[CODIGO_PRODUCTO]"
+                      length="255"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].Columns[CODIGO_PRODUCTO]"
+                      name="CODIGO_PRODUCTO"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].ExternalColumns[CODIGO_PRODUCTO]"
+                      dataType="wstr"
+                      length="255"
+                      name="CODIGO_PRODUCTO" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].ExternalColumns[NOMBRE]"
+                      dataType="wstr"
+                      length="255"
+                      name="NOMBRE" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].ExternalColumns[FAMILIA]"
+                      dataType="wstr"
+                      length="255"
+                      name="FAMILIA" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].ExternalColumns[PRECIO_UNITARIO]"
+                      dataType="i4"
+                      name="PRECIO_UNITARIO" />
+                    <externalMetadataColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB].ExternalColumns[COSTO_UNITARIO]"
+                      dataType="i4"
+                      name="COSTO_UNITARIO" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de error de origen de OLE DB].Columns[NOMBRE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de error de origen de OLE DB].Columns[NOMBRE]"
+                      name="NOMBRE" />
+                    <outputColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de error de origen de OLE DB].Columns[FAMILIA]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de error de origen de OLE DB].Columns[FAMILIA]"
+                      name="FAMILIA" />
+                    <outputColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de error de origen de OLE DB].Columns[PRECIO_UNITARIO]"
+                      dataType="i4"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de error de origen de OLE DB].Columns[PRECIO_UNITARIO]"
+                      name="PRECIO_UNITARIO" />
+                    <outputColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de error de origen de OLE DB].Columns[COSTO_UNITARIO]"
+                      dataType="i4"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de error de origen de OLE DB].Columns[COSTO_UNITARIO]"
+                      name="COSTO_UNITARIO" />
+                    <outputColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de error de origen de OLE DB].Columns[CODIGO_PRODUCTO]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de error de origen de OLE DB].Columns[CODIGO_PRODUCTO]"
+                      name="CODIGO_PRODUCTO" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ETL_dim_articulos.Paths[Salida de origen de OLE DB]"
+              endId="Package\ETL_dim_articulos\DW_dim_articulos.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de OLE DB"
+              startId="Package\ETL_dim_articulos\Transaccional_ARTICULOS.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\ETL_dim_articulos"
+          TopLeft="142,35" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ETL_dim_articulos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168,42"
+          Id="Package\ETL_dim_articulos\DW_dim_articulos"
+          TopLeft="221,151" />
+        <NodeLayout
+          Size="217,42"
+          Id="Package\ETL_dim_articulos\Transaccional_ARTICULOS"
+          TopLeft="214,20" />
+        <EdgeLayout
+          Id="Package\ETL_dim_articulos.Paths[Salida de origen de OLE DB]"
+          TopLeft="322.5,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17.5,89"
+              Start="0,0"
+              End="-17.5,81.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.5"
+                    Point2="0,44.5"
+                    Point3="-4,44.5" />
+                  <mssgle:LineSegment
+                    End="-13.5,44.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13.5,44.5"
+                    Point2="-17.5,44.5"
+                    Point3="-17.5,48.5" />
+                  <mssgle:LineSegment
+                    End="-17.5,81.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL_dim_articulos\DW_dim_articulos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ETL_dim_articulos\Transaccional_ARTICULOS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
